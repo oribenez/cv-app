@@ -4,6 +4,10 @@ export const $AppWrap = styled.div<{}>`
   position: relative;
   background-color: #190e22;
   width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+
   .space {
     position: fixed;
     width: 100%;
@@ -96,11 +100,13 @@ export const $AppWrap = styled.div<{}>`
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      padding-left: 3em;
 
       h2 {
-        margin: 3rem 1rem;
+        margin: 3rem 3rem;
         text-align: left;
+        @media screen and (min-width: 769px) and (max-width: 950px) {
+          margin-right: 7rem;
+        }
       }
       p {
         margin: 0;
@@ -156,6 +162,12 @@ export const $AppWrap = styled.div<{}>`
         width: 60vw;
         object-fit: cover;
         object-position: top;
+
+        @media screen and (min-width: 769px) and (max-width: 950px) {
+          width: 100%;
+        }
+        @media screen and (min-width: 480px) and (max-width: 768px) {
+        }
       }
     }
   }
@@ -165,12 +177,25 @@ export const $RocketWrap = styled.div`
   position: fixed;
   top: 0;
   z-index: 10;
-  height: 100vh;
-  width: 100vw;
-  background-color: #285464;
-  canvas {
-    /* height: 100vh; */
-    width: 100vw;
+  height: 100%;
+  width: 100%;
+  background-color: #333;
+  @media screen and (min-width: 769px) {
+    display: flex;
+    flex-direction: column-reverse;
+    canvas {
+      /* height: 100vh; */
+      width: 100vw;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    width: unset;
+    canvas {
+      /* height: 100vh; */
+      width: unset !important;
+
+      height: 100vh;
+    }
   }
 `
 
@@ -180,4 +205,10 @@ export const $Rocket2Wrap = styled.div`
   z-index: 10;
   width: 5rem;
   top: calc(50vh - 10rem);
+
+  @media screen and (max-width: 950px) {
+    width: 4rem;
+    bottom: 2rem;
+    top: unset;
+  }
 `

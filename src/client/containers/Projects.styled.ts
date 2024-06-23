@@ -24,15 +24,19 @@ export const $Container = styled.div`
     gap: 2rem;
     margin-left: 2rem;
     margin-right: 5rem;
+    @media screen and (min-width: 768px) and (max-width: 950px) {
+      margin-right: 3rem;
+    }
 
     .projectWrap {
       padding: 1rem 4rem;
-      /* background-color: rgba(255, 255, 255, 0.6); */
       border-radius: 1rem;
       border-left: 4px solid rgba(255, 255, 255, 0.1);
       border-top: 2px solid rgba(255, 255, 255, 0.1);
 
-      /* box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6) inset; */
+      @media screen and (max-width: 950px) {
+        padding: 1rem 2rem;
+      }
 
       p.info {
         background-color: #333;

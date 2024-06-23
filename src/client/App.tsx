@@ -1,8 +1,7 @@
 import { AnimateCC, GetAnimationObjectParameter } from 'react-adobe-animate'
 import { $RocketWrap, $Rocket2Wrap, $AppWrap } from './App.styled'
-import { useEffect, useRef, useState } from 'react'
-import { Parallax, ParallaxBanner, useParallax } from 'react-scroll-parallax'
-import { useLockBodyScroll } from './hooks/useLockBodyScroll'
+import { useEffect, useState } from 'react'
+import { useParallax } from 'react-scroll-parallax'
 import { ReactNebula } from '@flodlc/nebula'
 import ProfileImg from './assets/images/profile.jpg'
 import MoonImg from './assets/images/moon.svg'
@@ -12,12 +11,18 @@ import CVFile from './assets/files/cv-ori_ben_ezra.pdf'
 import Projects from './containers/Projects'
 import WhatsAppSender from './components/WhatsappSender'
 import { MdAlternateEmail } from 'react-icons/md'
+import { useMediaQuery } from '@uidotdev/usehooks'
 
 function App() {
-  const [_, getAnimationObject] = useState<GetAnimationObjectParameter | null>(null)
-  const [__, getAnimationObjectRocket] = useState<GetAnimationObjectParameter | null>(null)
+  const [_1, getAnimationIntro_desktop] = useState<GetAnimationObjectParameter | null>(null)
+  const [_2, getAnimationIntro_tablet] = useState<GetAnimationObjectParameter | null>(null)
+
+  const [_3, getAnimationIntro_mobile] = useState<GetAnimationObjectParameter | null>(null)
+  const [_4, getAnimationObjectRocket] = useState<GetAnimationObjectParameter | null>(null)
   const [isScrollLocked, setIsScrollLocked] = useState<Boolean>(true)
-  // const { lockBodyScroll, unlockBodyScroll } = useLockBodyScroll(isScrollLocked)
+
+  const isMobileDevice = useMediaQuery('only screen and (max-width : 479px)')
+  const isTabletDevice = useMediaQuery('only screen and (min-width: 480px) and (max-width: 768px)')
 
   const scrollToBottom = () => {
     window.scrollTo({ top: document.body.scrollHeight })
@@ -55,23 +60,38 @@ function App() {
     rotateZ: [-30, 30]
   })
 
+  // responsivness
+  let rocketCVAnimation = (
+    <AnimateCC
+      animationName="cvanimation"
+      getAnimationObject={getAnimationIntro_desktop}
+      composition="206C97A9C21A40D081ADF95D0641F137"
+    />
+  )
+  if (isTabletDevice)
+    rocketCVAnimation = (
+      <AnimateCC
+        animationName="cvanimationtablet"
+        getAnimationObject={getAnimationIntro_tablet}
+        composition="206C97A9C21A40D081ADF95D0641F138"
+      />
+    )
+  else if (isMobileDevice)
+    rocketCVAnimation = (
+      <AnimateCC
+        animationName="cvanimationmobile"
+        getAnimationObject={getAnimationIntro_mobile}
+        composition="206C97A9C21A40D081ADF95D0641F139"
+      />
+    )
+
   return (
     <$AppWrap>
       {isScrollLocked ? (
-        <$RocketWrap>
-          <AnimateCC
-            animationName="cvanimation"
-            getAnimationObject={getAnimationObject}
-            composition="206C97A9C21A40D081ADF95D0641F137"
-          />
-        </$RocketWrap>
+        <$RocketWrap>{rocketCVAnimation}</$RocketWrap>
       ) : (
         <$Rocket2Wrap>
-          <AnimateCC
-            animationName="rocket2"
-            getAnimationObject={getAnimationObjectRocket}
-            composition="69A91F9B681E44A686F2E3FACBB2C424"
-          />
+          <AnimateCC animationName="rocket2" getAnimationObject={getAnimationObjectRocket} />
         </$Rocket2Wrap>
       )}
 
