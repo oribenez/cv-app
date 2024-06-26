@@ -12,6 +12,7 @@ import Projects from './containers/Projects'
 import WhatsAppSender from './components/WhatsappSender'
 import { MdAlternateEmail } from 'react-icons/md'
 import { useMediaQuery } from '@uidotdev/usehooks'
+import CodeIcons from './assets/images/code-lang-icons.svg'
 
 function App() {
   const [_1, getAnimationIntro_desktop] = useState<GetAnimationObjectParameter | null>(null)
@@ -104,8 +105,10 @@ function App() {
           }}
         />
       </div>
-      <div className="bgStackWrap">
+      <div className="overlay">
         <div className="floating">
+          <footer>Thank you for your time. Ori Ben Ezra | +972 548321468</footer>
+
           <Projects />
 
           <div className="sunWrap">
@@ -127,6 +130,9 @@ function App() {
                     Typescript, Javascript, React, React Query, Redux, Node, Express, MongoDB, CSS, HTML, SQL, OOP,
                     Java, C#, C/C++, Python, ASP.NET
                   </i>
+                  <br />
+                  <br />
+                  <img src={CodeIcons} height="70rem" />
                 </p>
               </li>
 
@@ -218,21 +224,21 @@ function App() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="scrollGestureWrap">
-          <div>
-            <div className="mouse"></div>
-            <p>Scroll</p>
+          <div className="scrollGestureWrap">
+            <div>
+              <div className="mouse"></div>
+              <p>Scroll</p>
+            </div>
+
+            <h2>
+              Hi there 👋, <br />
+              I'm <b>Ori Ben Ezra</b>, a software developer <i>{'< />'}</i>
+            </h2>
           </div>
 
-          <h2>
-            Hi there 👋, <br />
-            I'm <b>Ori Ben Ezra</b>, a software developer <i>{'< />'}</i>
-          </h2>
-        </div>
-
-        <div className="earthWrap">
-          <img src={EarthImg} />
+          <div className="earthWrap">
+            <img src={EarthImg} />
+          </div>
         </div>
       </div>
     </$AppWrap>

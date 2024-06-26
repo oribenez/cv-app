@@ -12,20 +12,36 @@ export const $AppWrap = styled.div<{}>`
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 3;
     top: 0;
+    left: 0;
+    z-index: 1;
   }
 
-  .bgStackWrap {
-    width: 100vw;
-    position: absolute;
-    z-index: 3;
+  .overlay {
+    position: sticky;
     color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
 
     .floating {
-      /* width: 80vw; */
+      overflow-y: auto;
+      width: 100%;
+      height: 100%;
       h1 {
         margin: 0;
+      }
+
+      footer {
+        padding: 0.5rem;
+        background-color: #382c6f;
+        border-radius: 0.7rem;
+        margin: 2rem;
+        color: #b5a5fd;
+        border: 3px solid #5b4d9c;
+        text-align: center;
       }
 
       .sunWrap {
@@ -44,8 +60,12 @@ export const $AppWrap = styled.div<{}>`
       }
 
       .techWrap {
-        padding-left: 3rem;
-        width: 80vw;
+        padding-right: 7em;
+        padding-left: 2rem;
+
+        @media screen and (max-width: 950px) {
+          padding: 0 2rem;
+        }
       }
 
       .moonWrap {
@@ -66,8 +86,13 @@ export const $AppWrap = styled.div<{}>`
       .about {
         display: flex;
         gap: 2em;
-        padding-left: 3em;
-        width: 80vw;
+        padding-right: 7em;
+        padding-left: 2rem;
+
+        @media screen and (max-width: 950px) {
+          padding: 0 2rem;
+        }
+
         .profileImgWrap {
           img {
             border-radius: 300em;
@@ -102,7 +127,7 @@ export const $AppWrap = styled.div<{}>`
       justify-content: space-around;
 
       h2 {
-        margin: 3rem 3rem;
+        margin: 3rem;
         text-align: left;
         @media screen and (min-width: 769px) and (max-width: 950px) {
           margin-right: 7rem;
@@ -164,9 +189,10 @@ export const $AppWrap = styled.div<{}>`
         object-position: top;
 
         @media screen and (min-width: 769px) and (max-width: 950px) {
-          width: 100%;
+          width: 80%;
         }
-        @media screen and (min-width: 480px) and (max-width: 768px) {
+        @media screen and (max-width: 768px) {
+          width: 90%;
         }
       }
     }
@@ -189,12 +215,10 @@ export const $RocketWrap = styled.div`
     }
   }
   @media screen and (max-width: 768px) {
-    width: unset;
+    /* width: unset; */
     canvas {
-      /* height: 100vh; */
-      width: unset !important;
-
-      height: 100vh;
+      /* width: unset !important;
+      height: 100vh; */
     }
   }
 `

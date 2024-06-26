@@ -29,7 +29,7 @@ export const $Container = styled.div`
     }
 
     .projectWrap {
-      padding: 1rem 4rem;
+      padding: 1rem 2rem;
       border-radius: 1rem;
       border-left: 4px solid rgba(255, 255, 255, 0.1);
       border-top: 2px solid rgba(255, 255, 255, 0.1);
