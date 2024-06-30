@@ -121,7 +121,7 @@ function App() {
                   </i>
                   <br />
                   <br />
-                  <img src={CodeIcons} height="70rem" />
+                  <img src={CodeIcons} height="70rem" width="100%" />
                 </p>
               </li>
 
