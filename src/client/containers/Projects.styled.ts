@@ -27,6 +27,9 @@ export const $Container = styled.div`
     @media screen and (min-width: 768px) and (max-width: 950px) {
       margin-right: 3rem;
     }
+    @media screen and (max-width: 950px) {
+      margin-right: 2rem;
+    }
 
     .projectWrap {
       padding: 1rem 2rem;
@@ -56,8 +59,10 @@ export const $Container = styled.div`
           flex-direction: column;
           gap: 1rem;
         }
-        .videoWrap video {
-          width: 30rem;
+        .videoWrap video,
+        .videoWrap img {
+          width: 100%;
+          max-width: 30rem;
         }
       }
     }

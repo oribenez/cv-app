@@ -1,5 +1,5 @@
 import { AnimateCC, GetAnimationObjectParameter } from 'react-adobe-animate'
-import { $RocketWrap, $Rocket2Wrap, $AppWrap } from './App.styled'
+import { $IntroWrapBg, $IntroWrapRocket, $Rocket2Wrap, $AppWrap } from './App.styled'
 import { useEffect, useState } from 'react'
 import { useParallax } from 'react-scroll-parallax'
 import { ReactNebula } from '@flodlc/nebula'
@@ -15,11 +15,10 @@ import { useMediaQuery } from '@uidotdev/usehooks'
 import CodeIcons from './assets/images/code-lang-icons.svg'
 
 function App() {
-  const [_1, getAnimationIntro_desktop] = useState<GetAnimationObjectParameter | null>(null)
-  const [_2, getAnimationIntro_tablet] = useState<GetAnimationObjectParameter | null>(null)
+  const [_1, getAnimationIntro_bg] = useState<GetAnimationObjectParameter | null>(null)
+  const [_2, getAnimationIntro_rocket] = useState<GetAnimationObjectParameter | null>(null)
 
-  const [_3, getAnimationIntro_mobile] = useState<GetAnimationObjectParameter | null>(null)
-  const [_4, getAnimationObjectRocket] = useState<GetAnimationObjectParameter | null>(null)
+  const [_3, getAnimationObjectRocket] = useState<GetAnimationObjectParameter | null>(null)
   const [isScrollLocked, setIsScrollLocked] = useState<Boolean>(true)
 
   const isMobileDevice = useMediaQuery('only screen and (max-width : 479px)')
@@ -61,35 +60,25 @@ function App() {
     rotateZ: [-30, 30]
   })
 
-  // responsivness
-  let rocketCVAnimation = (
-    <AnimateCC
-      animationName="cvanimation"
-      getAnimationObject={getAnimationIntro_desktop}
-      composition="206C97A9C21A40D081ADF95D0641F137"
-    />
-  )
-  if (isTabletDevice)
-    rocketCVAnimation = (
-      <AnimateCC
-        animationName="cvanimationtablet"
-        getAnimationObject={getAnimationIntro_tablet}
-        composition="206C97A9C21A40D081ADF95D0641F138"
-      />
-    )
-  else if (isMobileDevice)
-    rocketCVAnimation = (
-      <AnimateCC
-        animationName="cvanimationmobile"
-        getAnimationObject={getAnimationIntro_mobile}
-        composition="206C97A9C21A40D081ADF95D0641F139"
-      />
-    )
-
   return (
     <$AppWrap>
       {isScrollLocked ? (
-        <$RocketWrap>{rocketCVAnimation}</$RocketWrap>
+        <>
+          <$IntroWrapBg>
+            <AnimateCC
+              animationName="cvanimationbg"
+              getAnimationObject={getAnimationIntro_bg}
+              composition="206C97A9C21A40D081ADF95D0641F140"
+            />
+          </$IntroWrapBg>
+          <$IntroWrapRocket>
+            <AnimateCC
+              animationName="cvanimationresponsive"
+              getAnimationObject={getAnimationIntro_rocket}
+              composition="206C97A9C21A40D081ADF95D0641F141"
+            />
+          </$IntroWrapRocket>
+        </>
       ) : (
         <$Rocket2Wrap>
           <AnimateCC animationName="rocket2" getAnimationObject={getAnimationObjectRocket} />

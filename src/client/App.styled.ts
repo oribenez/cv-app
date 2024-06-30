@@ -91,9 +91,12 @@ export const $AppWrap = styled.div<{}>`
 
         @media screen and (max-width: 950px) {
           padding: 0 2rem;
+          flex-direction: column;
         }
 
         .profileImgWrap {
+          display: flex;
+          justify-content: center;
           img {
             border-radius: 300em;
           }
@@ -181,6 +184,9 @@ export const $AppWrap = styled.div<{}>`
       position: relative;
       height: 50vh;
       display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      overflow: hidden;
 
       img {
         margin: 0 auto;
@@ -199,27 +205,39 @@ export const $AppWrap = styled.div<{}>`
   }
 `
 
-export const $RocketWrap = styled.div`
+export const $IntroWrapRocket = styled.div`
+  position: fixed;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  canvas {
+    height: 100vh;
+    transform-origin: top;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+  }
+`
+
+export const $IntroWrapBg = styled.div`
   position: fixed;
   top: 0;
   z-index: 10;
   height: 100%;
   width: 100%;
-  background-color: #333;
-  @media screen and (min-width: 769px) {
-    display: flex;
-    flex-direction: column-reverse;
-    canvas {
-      /* height: 100vh; */
-      width: 100vw;
-    }
-  }
-  @media screen and (max-width: 768px) {
-    /* width: unset; */
-    canvas {
-      /* width: unset !important;
-      height: 100vh; */
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  canvas {
+    height: 100vh;
+    object-fit: cover;
+    width: 100vw !important;
   }
 `
 
@@ -228,11 +246,29 @@ export const $Rocket2Wrap = styled.div`
   right: 2rem;
   z-index: 10;
   width: 5rem;
-  top: calc(50vh - 10rem);
+  top: 50%;
+  transform: translateY(-50%);
+  /* padding: 20px; */
+  border-radius: 8px;
+  animation: slideIn 2s cubic-bezier(0.39, 0.58, 0.57, 1) forwards;
 
-  @media screen and (max-width: 950px) {
+  @keyframes slideIn {
+    0% {
+      transform: translateX(0) translateY(200%);
+    }
+    100% {
+      transform: translateX(0) translateY(-50%);
+    }
+  }
+
+  @media screen and (min-width: 650px) and (max-width: 950px) {
     width: 4rem;
-    bottom: 2rem;
+    bottom: 0;
+    top: unset;
+  }
+  @media screen and (min-width: 450px) and (max-width: 649px) {
+    width: 4rem;
+    bottom: 0;
     top: unset;
   }
 `
